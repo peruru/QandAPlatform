@@ -1,0 +1,33 @@
+{
+  "name": "SubTopic",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "questions",
+      "otherEntityRelationshipName": "subTopic",
+      "relationshipName": "questions"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "topic",
+      "otherEntityRelationshipName": "subTopic",
+      "relationshipName": "topic"
+    }
+  ],
+  "entityTableName": "sub_topic",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["QandAPlatform"],
+  "changelogDate": "20210419051105"
+}

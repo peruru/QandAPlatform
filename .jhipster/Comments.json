@@ -1,0 +1,33 @@
+{
+  "name": "Comments",
+  "fields": [
+    {
+      "fieldName": "text",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "users",
+      "otherEntityRelationshipName": "comments",
+      "relationshipName": "users"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "answers",
+      "otherEntityRelationshipName": "comments",
+      "relationshipName": "answers"
+    }
+  ],
+  "entityTableName": "comments",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["QandAPlatform"],
+  "changelogDate": "20210419051109"
+}

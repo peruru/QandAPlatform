@@ -1,0 +1,60 @@
+{
+  "name": "Questions",
+  "fields": [
+    {
+      "fieldName": "text",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "answers",
+      "otherEntityRelationshipName": "questions",
+      "relationshipName": "answers"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "company",
+      "otherEntityRelationshipName": "questions",
+      "relationshipName": "company",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "tags",
+      "otherEntityRelationshipName": "questions",
+      "relationshipName": "tags",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "questionLikes",
+      "otherEntityRelationshipName": "questions",
+      "relationshipName": "questionLikes",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "users",
+      "otherEntityRelationshipName": "questions",
+      "relationshipName": "users"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "subTopic",
+      "otherEntityRelationshipName": "questions",
+      "relationshipName": "subTopic"
+    }
+  ],
+  "entityTableName": "questions",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["QandAPlatform"],
+  "changelogDate": "20210419051110"
+}

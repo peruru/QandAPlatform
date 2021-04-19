@@ -1,0 +1,41 @@
+{
+  "name": "Users",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "questions",
+      "otherEntityRelationshipName": "users",
+      "relationshipName": "questions"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "questionLikes",
+      "otherEntityRelationshipName": "users",
+      "relationshipName": "questionLikes",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "answerLikes",
+      "otherEntityRelationshipName": "users",
+      "relationshipName": "answerLikes",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "users",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["QandAPlatform"],
+  "changelogDate": "20210419051108"
+}

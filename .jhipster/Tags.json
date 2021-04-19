@@ -1,0 +1,28 @@
+{
+  "name": "Tags",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "questions",
+      "otherEntityRelationshipName": "tags",
+      "relationshipName": "questions",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "tags",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["QandAPlatform"],
+  "changelogDate": "20210419051106"
+}

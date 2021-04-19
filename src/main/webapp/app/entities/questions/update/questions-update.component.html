@@ -1,0 +1,93 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-questions-heading"
+        data-cy="QuestionsCreateUpdateHeading"
+        jhiTranslate="qandAPlatformApp.questions.home.createOrEditLabel"
+      >
+        Create or edit a Questions
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="qandAPlatformApp.questions.text" for="field_text">Text</label>
+          <input type="text" class="form-control" name="text" id="field_text" data-cy="text" formControlName="text" />
+        </div>
+
+        <div class="form-group">
+          <label jhiTranslate="qandAPlatformApp.questions.company" for="field_companies">Company</label>
+          <select class="form-control" id="field_companies" data-cy="company" multiple name="companies" formControlName="companies">
+            <option
+              [ngValue]="getSelectedCompany(companyOption, editForm.get('companies')!.value)"
+              *ngFor="let companyOption of companiesSharedCollection; trackBy: trackCompanyById"
+            >
+              {{ companyOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label jhiTranslate="qandAPlatformApp.questions.tags" for="field_tags">Tags</label>
+          <select class="form-control" id="field_tags" data-cy="tags" multiple name="tags" formControlName="tags">
+            <option
+              [ngValue]="getSelectedTags(tagsOption, editForm.get('tags')!.value)"
+              *ngFor="let tagsOption of tagsSharedCollection; trackBy: trackTagsById"
+            >
+              {{ tagsOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="qandAPlatformApp.questions.users" for="field_users">Users</label>
+          <select class="form-control" id="field_users" data-cy="users" name="users" formControlName="users">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="usersOption.id === editForm.get('users')!.value?.id ? editForm.get('users')!.value : usersOption"
+              *ngFor="let usersOption of usersSharedCollection; trackBy: trackUsersById"
+            >
+              {{ usersOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="qandAPlatformApp.questions.subTopic" for="field_subTopic">Sub Topic</label>
+          <select class="form-control" id="field_subTopic" data-cy="subTopic" name="subTopic" formControlName="subTopic">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="subTopicOption.id === editForm.get('subTopic')!.value?.id ? editForm.get('subTopic')!.value : subTopicOption"
+              *ngFor="let subTopicOption of subTopicsSharedCollection; trackBy: trackSubTopicById"
+            >
+              {{ subTopicOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
