@@ -1,0 +1,104 @@
+<div>
+  <h2 id="page-heading" data-cy="QuestionsHeading">
+    <span jhiTranslate="qandAPlatformApp.questions.home.title">Questions</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="qandAPlatformApp.questions.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-questions"
+        [routerLink]="['/questions/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="qandAPlatformApp.questions.home.createLabel"> Create a new Questions </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="questions?.length === 0">
+    <span jhiTranslate="qandAPlatformApp.questions.home.notFound">No questions found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="questions && questions.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="qandAPlatformApp.questions.text">Text</span></th>
+          <th scope="col"><span jhiTranslate="qandAPlatformApp.questions.company">Company</span></th>
+          <th scope="col"><span jhiTranslate="qandAPlatformApp.questions.tags">Tags</span></th>
+          <th scope="col"><span jhiTranslate="qandAPlatformApp.questions.users">Users</span></th>
+          <th scope="col"><span jhiTranslate="qandAPlatformApp.questions.subTopic">Sub Topic</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let questions of questions; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/questions', questions.id, 'view']">{{ questions.id }}</a>
+          </td>
+          <td>{{ questions.text }}</td>
+          <td>
+            <span *ngFor="let company of questions.companies; let last = last">
+              <a class="form-control-static" [routerLink]="['/company', company.id, 'view']">{{ company.id }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td>
+            <span *ngFor="let tags of questions.tags; let last = last">
+              <a class="form-control-static" [routerLink]="['/tags', tags.id, 'view']">{{ tags.id }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td>
+            <div *ngIf="questions.users">
+              <a [routerLink]="['/users', questions.users?.id, 'view']">{{ questions.users?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="questions.subTopic">
+              <a [routerLink]="['/sub-topic', questions.subTopic?.id, 'view']">{{ questions.subTopic?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/questions', questions.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/questions', questions.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(questions)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="questions">
+      <h2 data-cy="questionsDetailsHeading"><span jhiTranslate="qandAPlatformApp.questions.detail.title">Questions</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ questions.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="qandAPlatformApp.questions.text">Text</span></dt>
+        <dd>
+          <span>{{ questions.text }}</span>
+        </dd>
+        <dt><span jhiTranslate="qandAPlatformApp.questions.company">Company</span></dt>
+        <dd>
+          <span *ngFor="let company of questions.companies; let last = last">
+            <a [routerLink]="['/company', company?.id, 'view']">{{ company.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="qandAPlatformApp.questions.tags">Tags</span></dt>
+        <dd>
+          <span *ngFor="let tags of questions.tags; let last = last">
+            <a [routerLink]="['/tags', tags?.id, 'view']">{{ tags.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="qandAPlatformApp.questions.users">Users</span></dt>
+        <dd>
+          <div *ngIf="questions.users">
+            <a [routerLink]="['/users', questions.users?.id, 'view']">{{ questions.users?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="qandAPlatformApp.questions.subTopic">Sub Topic</span></dt>
+        <dd>
+          <div *ngIf="questions.subTopic">
+            <a [routerLink]="['/sub-topic', questions.subTopic?.id, 'view']">{{ questions.subTopic?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/questions', questions.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

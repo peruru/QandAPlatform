@@ -1,0 +1,27 @@
+{
+  "name": "Topic",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "subTopic",
+      "otherEntityRelationshipName": "topic",
+      "relationshipName": "subTopic"
+    }
+  ],
+  "entityTableName": "topic",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["QandAPlatform"],
+  "changelogDate": "20210419051104"
+}

@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="answerLikes">
+      <h2 data-cy="answerLikesDetailsHeading"><span jhiTranslate="qandAPlatformApp.answerLikes.detail.title">Answer Likes</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ answerLikes.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="qandAPlatformApp.answerLikes.answers">Answers</span></dt>
+        <dd>
+          <div *ngIf="answerLikes.answers">
+            <a [routerLink]="['/answers', answerLikes.answers?.id, 'view']">{{ answerLikes.answers?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="qandAPlatformApp.answerLikes.users">Users</span></dt>
+        <dd>
+          <div *ngIf="answerLikes.users">
+            <a [routerLink]="['/users', answerLikes.users?.id, 'view']">{{ answerLikes.users?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/answer-likes', answerLikes.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

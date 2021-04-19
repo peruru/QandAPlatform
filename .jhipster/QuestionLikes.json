@@ -1,0 +1,30 @@
+{
+  "name": "QuestionLikes",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "questions",
+      "otherEntityRelationshipName": "questionLikes",
+      "relationshipName": "questions",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "users",
+      "otherEntityRelationshipName": "questionLikes",
+      "relationshipName": "users",
+      "ownerSide": true
+    }
+  ],
+  "entityTableName": "question_likes",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["QandAPlatform"],
+  "changelogDate": "20210419051112"
+}

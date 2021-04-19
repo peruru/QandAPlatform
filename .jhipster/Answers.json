@@ -1,0 +1,34 @@
+{
+  "name": "Answers",
+  "fields": [
+    {
+      "fieldName": "text",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "answerLikes",
+      "otherEntityRelationshipName": "answers",
+      "relationshipName": "answerLikes",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "questions",
+      "otherEntityRelationshipName": "answers",
+      "relationshipName": "questions"
+    }
+  ],
+  "entityTableName": "answers",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["QandAPlatform"],
+  "changelogDate": "20210419051111"
+}

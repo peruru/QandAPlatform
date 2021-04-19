@@ -1,0 +1,25 @@
+{
+  "qandAPlatformApp": {
+    "answerLikes": {
+      "home": {
+        "title": "Answer Likes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Answer Likes",
+        "createOrEditLabel": "Create or edit a Answer Likes",
+        "notFound": "No Answer Likes found"
+      },
+      "created": "A new Answer Likes is created with identifier {{ param }}",
+      "updated": "A Answer Likes is updated with identifier {{ param }}",
+      "deleted": "A Answer Likes is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Answer Likes {{ id }}?"
+      },
+      "detail": {
+        "title": "Answer Likes"
+      },
+      "id": "ID",
+      "answers": "Answers",
+      "users": "Users"
+    }
+  }
+}

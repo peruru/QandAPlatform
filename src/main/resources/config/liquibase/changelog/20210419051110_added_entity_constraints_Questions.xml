@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity Questions.
+    -->
+    <changeSet id="20210419051110-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="questions_id"
+                                 baseTableName="rel_questions__company"
+                                 constraintName="fk_rel_questions__company__questions_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="questions"/>
+
+        <addForeignKeyConstraint baseColumnNames="company_id"
+                                 baseTableName="rel_questions__company"
+                                 constraintName="fk_rel_questions__company__company_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="company"/>
+
+        <addForeignKeyConstraint baseColumnNames="questions_id"
+                                 baseTableName="rel_questions__tags"
+                                 constraintName="fk_rel_questions__tags__questions_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="questions"/>
+
+        <addForeignKeyConstraint baseColumnNames="tags_id"
+                                 baseTableName="rel_questions__tags"
+                                 constraintName="fk_rel_questions__tags__tags_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tags"/>
+
+        <addForeignKeyConstraint baseColumnNames="users_id"
+                                 baseTableName="questions"
+                                 constraintName="fk_questions__users_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="users"/>
+
+        <addForeignKeyConstraint baseColumnNames="sub_topic_id"
+                                 baseTableName="questions"
+                                 constraintName="fk_questions__sub_topic_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sub_topic"/>
+    </changeSet>
+</databaseChangeLog>
