@@ -1,0 +1,91 @@
+
+application {
+  config {
+  	skipUserManagement true,
+    baseName QandAPlatform,
+    applicationType monolith,
+    packageName com.qap.myapp,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    clientFramework angular,
+    devDatabaseType mysql
+  }
+  entities *
+}
+
+entity Topic {
+  Name String
+}
+
+entity SubTopic{
+  Name String
+}
+
+entity Tags{
+  Name String
+}
+
+entity Company{
+  Name String
+}
+
+entity Users{
+  Name String
+}
+
+entity Comments{
+  Text String
+}
+
+entity Questions{
+  Text String
+}
+
+entity Answers{
+  Text String
+}
+
+entity QuestionLikes{ 
+
+}
+
+entity AnswerLikes{
+
+}
+
+
+relationship ManyToMany{
+  Questions{company} to Company{questions}
+}
+
+relationship ManyToMany{
+  Questions{tags} to Tags{Questions}
+}
+
+relationship OneToMany{
+  Users to Questions{users}
+}
+relationship OneToMany{
+  Questions to Answers{questions}
+}
+relationship OneToMany{
+  Topic to SubTopic{topic},
+  SubTopic to Questions{subTopic},
+}
+
+relationship ManyToOne{
+  Comments{users} to Users,
+  Comments{answers} to Answers
+}
+
+relationship OneToOne{
+  QuestionLikes{questions} to Questions{questionLikes},
+  QuestionLikes{users} to Users{questionLikes}
+}
+
+relationship OneToOne{
+  AnswerLikes{answers} to Answers{answerLikes},
+  AnswerLikes{users} to Users{answerLikes}
+}
+
+    
